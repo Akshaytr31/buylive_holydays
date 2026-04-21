@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-h&8z5nz$zkfw$rikayn7v8ehkjahq@y+j$7e#!9%b2cg0-@i%8
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-FRONTEND_URL = "http://127.0.0.1:8000"
+FRONTEND_URL = "https://buyliv.appziatec.in"
 
 # Application definition
 
@@ -51,8 +51,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
-    "http://192.168.1.53:8000",
-    "http://127.0.0.1:8000"
+    "http://192.168.1.53:8000"
 ]
 
 
