@@ -167,6 +167,7 @@ class ReferralLinkView(APIView):
     
 def register_page(request):
     referral_code = request.GET.get("ref", "")
+    plans = Plan.objects.filter(name__in=["main", "agent"])
 
     if request.method == "POST":
         data = request.POST.copy()
@@ -187,11 +188,13 @@ def register_page(request):
         return render(request, "register.html", {
             "errors": serializer.errors,
             "referral_code": referral_code,
-            "data": request.POST
+            "data": request.POST,
+            "plans": plans
         })
 
     return render(request, "register.html", {
-        "referral_code": referral_code
+        "referral_code": referral_code,
+        "plans": plans
     })
 
 def register_success(request):

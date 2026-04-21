@@ -12,6 +12,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
 from .models import Voucher
+from voucher.models import Plan
 
 
 class LoginSerializer(serializers.Serializer):
@@ -63,6 +64,7 @@ class RegisterSerializer(serializers.Serializer):
     phone = serializers.CharField()
     bank_account_number = serializers.CharField()
     ifsc_code = serializers.CharField()
+    plan = serializers.PrimaryKeyRelatedField(queryset=Plan.objects.all(), required=False)
 
     def validate(self, data):
         referral_code = data.get("referral_code")
@@ -222,6 +224,7 @@ class UserDetailSerializer(serializers.ModelSerializer):
 #request list and details
 class RegistrationRequestSerializer(serializers.ModelSerializer):
     sponsor_name = serializers.CharField(source="sponsor.username", read_only=True)
+    plan_name = serializers.CharField(source="plan.name", read_only=True)
 
     class Meta:
         model = RegistrationRequest
@@ -239,6 +242,8 @@ class RegistrationRequestSerializer(serializers.ModelSerializer):
             "ifsc_code",
             "sponsor",
             "sponsor_name",
+            "plan",
+            "plan_name",
         ]
 
 

@@ -101,6 +101,12 @@ class RegistrationRequest(models.Model):
 
     bank_account_number = models.CharField(max_length=50)
     ifsc_code = models.CharField(max_length=20)
+    plan = models.ForeignKey(
+        Plan,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL
+    )
     voucher = models.ForeignKey(
     Voucher,
     null=True,

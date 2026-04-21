@@ -51,7 +51,8 @@ CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
-    "http://192.168.1.47:8000/"
+    "http://192.168.1.53:8000",
+    "http://127.0.0.1:8000"
 ]
 
 
@@ -110,8 +111,8 @@ SIMPLE_JWT = {
 
 WSGI_APPLICATION = 'buyliv.wsgi.application'
 
-WALLET_ACTIVATION_DELAY_MINUTES = 5  # 24 hours (default)
-INCOME_ELIGIBILITY_DELAY_MINUTES = 5
+WALLET_ACTIVATION_DELAY_MINUTES = 1440  # 24 hours (default)
+INCOME_ELIGIBILITY_DELAY_MINUTES = 1440
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases

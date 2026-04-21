@@ -180,6 +180,16 @@ Referral Code: <b>{{ referral_code }}</b>
 <input type="password" name="password" placeholder="Password (6 chars)" required>
 <input name="phone" placeholder="Phone" required>
 
+<label style="display: block; font-size: 13px; color: var(--muted); margin-bottom: 5px;">Select Plan *</label>
+<select name="plan" required style="width: 100%; padding: 10px; margin-bottom: 12px; border-radius: 8px; border: 1px solid var(--border); background: transparent; color: var(--text);">
+    <option value="" disabled selected>Select Plan</option>
+    {% for plan in plans %}
+        <option value="{{ plan.id }}">
+            {{ plan.amount|floatformat:0 }} {{ plan.name }} plan
+        </option>
+    {% endfor %}
+</select>
+
 <textarea name="address" placeholder="Address"></textarea>
 
 <input name="bank_account_number" placeholder="Bank Account">
